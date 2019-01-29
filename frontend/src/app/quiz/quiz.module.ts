@@ -5,6 +5,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { QuizRoutingModule } from './quiz-routing.module';
 import { QuizComponent } from './quiz/quiz.component';
 import {MaterialModule} from '../material';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
   imports: [
@@ -12,7 +13,8 @@ import {MaterialModule} from '../material';
     FormsModule,
     ReactiveFormsModule,
     QuizRoutingModule,
-    MaterialModule
+    MaterialModule,
+    FlexLayoutModule
   ],
   declarations: [QuizComponent],
   providers: []

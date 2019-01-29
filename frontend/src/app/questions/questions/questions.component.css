@@ -39,3 +39,9 @@ ol {
 .card {
   width: 100%;
 }
+
+button{
+  font-size: 2vw;
+    font-size: 2vh;
+    white-space:normal;
+}

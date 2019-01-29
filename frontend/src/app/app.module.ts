@@ -4,7 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { QuestionsService } from './_shared/questions.service';
 import { AppRoutingModule } from './app-routing.module';
-
+import { FlexLayoutModule } from '@angular/flex-layout';
 import { AppComponent } from './app.component';
 import { RootComponent } from './root/root.component';
 import { LoginService } from './_shared/login.service';
@@ -15,6 +15,7 @@ import { ResultDialogComponent } from './_shared/result-dialog/result-dialog.com
 import { ConfirmDeleteComponent } from './_shared/confirm-delete/confirm-delete.component';
 import { CustomDialogComponent } from './_shared/custom-dialog/custom-dialog.component';
 import {AuthModule} from "./auth/auth.module";
+
 
 
 @NgModule({
@@ -34,6 +35,7 @@ import {AuthModule} from "./auth/auth.module";
     AppRoutingModule,
     BrowserAnimationsModule,
     MaterialModule,
+    FlexLayoutModule,
     AuthModule
   ],
   providers: [

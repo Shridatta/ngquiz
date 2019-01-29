@@ -8,6 +8,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatStepperModule } from '@angular/material/stepper';
 import { MatDialogModule } from '@angular/material/dialog';
+import {MatToolbarModule} from '@angular/material/toolbar';
 
 @NgModule({
   imports: [
@@ -19,7 +20,8 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatListModule,
     MatDividerModule,
     MatStepperModule,
-    MatDialogModule
+    MatDialogModule,
+    MatToolbarModule
     ],
   exports: [
     MatButtonModule,
@@ -30,7 +32,8 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatListModule,
     MatDividerModule,
     MatStepperModule,
-    MatDialogModule
+    MatDialogModule,
+    MatToolbarModule
   ]
 })
 export class MaterialModule { }

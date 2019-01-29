@@ -1,5 +1,6 @@
-<div class="container" id="search">
-    <mat-form-field class="search-field">
+<mat-toolbar class="mb-2" color="primary">Quiz App</mat-toolbar>
+<div class="container mb-2" id="search" fxLayout="row" fxLayoutAlign="end center" >
+    <mat-form-field class="search-field mr-1">
       <input #searchText id="searchText" matInput placeholder="Enter Search query"/>
     </mat-form-field>
       <button class="float-right my-3" mat-raised-button color="primary" (click)="searchQuestionsWithText(searchText.value)">
@@ -7,7 +8,15 @@
       </button>
 </div>
 
-<div class="container" style="height: 4em;">
+<div class="container" style="height: 4em;" fxLayout="row" fxLayoutAlign="end center" >
+    <button mat-raised-button color="primary" class="float-right my-3 ml-2" (click)="startQuiz()">
+        <mat-icon>
+          assignment
+        </mat-icon>
+    
+        Take Quiz 1
+      </button>
+
   <button mat-raised-button color="primary" class="float-right my-3 ml-2" (click)="startOwnQuiz()">
     <mat-icon>
       assignment
@@ -15,13 +24,7 @@
 
     Take Quiz 2
   </button>
-  <button mat-raised-button color="primary" class="float-right my-3 ml-2" (click)="startQuiz()">
-    <mat-icon>
-      assignment
-    </mat-icon>
-
-    Take Quiz 1
-  </button>
+  &nbsp; &nbsp;
   <button mat-raised-button color="primary" class="float-right my-3" (click)="addQuestion()">
     <mat-icon>
       add
@@ -30,7 +33,7 @@
   </button>
 </div>
 
-<div class="container mt-2" *ngIf="questions && questions.length; else elseTemplate">
+<div class="container mt-5"  fxLayoutAlign="center center" *ngIf="questions && questions.length; else elseTemplate">
     <div class="w-100">
       <ol>
         <li *ngFor="let question of filteredQuestions; let i = index">
