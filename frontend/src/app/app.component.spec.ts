@@ -1,35 +1,44 @@
-import {TestBed, async, ComponentFixture} from '@angular/core/testing';
-import {AppComponent} from './app.component';
-import {LoginService} from "./_shared/login.service";
-import {OAuthService} from "angular-oauth2-oidc";
-import {RouterTestingModule} from "@angular/router/testing";
+import { TestBed, async, ComponentFixture } from "@angular/core/testing";
+import { AppComponent } from "./app.component";
+import { LoginService } from "./_shared/login.service";
+import { OAuthService } from "angular-oauth2-oidc";
+import { RouterTestingModule } from "@angular/router/testing";
+import { MatToolbarModule } from "@angular/material/toolbar";
+import { Router } from "@angular/router";
 
-let noopFn: () => void = () => {
-};
+let noopFn: () => void = () => {};
 
-describe('AppComponent', () => {
-
+describe("AppComponent", () => {
   let fixture: ComponentFixture<AppComponent>;
   let component: AppComponent;
 
-  const oAuthService = jasmine.createSpyObj('OAuthService', ['loadDiscoveryDocument', 'tryLogin', 'hasValidAccessToken',
-    'silentRefresh', 'getIdentityClaims', 'setupAutomaticSilentRefresh', 'getAccessToken', 'initImplicitFlow',
-    'logOut']);
+  class RouterStub {
+    navigate(params) {}
+  }
+
+  const oAuthService = jasmine.createSpyObj("OAuthService", [
+    "loadDiscoveryDocument",
+    "tryLogin",
+    "hasValidAccessToken",
+    "silentRefresh",
+    "getIdentityClaims",
+    "setupAutomaticSilentRefresh",
+    "getAccessToken",
+    "initImplicitFlow",
+    "logOut"
+  ]);
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [
-        RouterTestingModule
-      ],
-      declarations: [
-        AppComponent
-      ],
+      imports: [RouterTestingModule, MatToolbarModule],
+      declarations: [AppComponent],
       providers: [
         LoginService,
         {
           provide: OAuthService,
           useValue: oAuthService
-        }
+        },
+        { provide: Router, useClass: RouterStub }
       ]
     }).compileComponents();
 
@@ -44,7 +53,7 @@ describe('AppComponent', () => {
     oAuthService.silentRefresh.and.returnValue(callbackPatternObj);
     oAuthService.hasValidAccessToken.and.returnValue(false);
     oAuthService.getIdentityClaims.and.returnValue({
-      "name": "some_username"
+      name: "some_username"
     });
     oAuthService.setupAutomaticSilentRefresh.and.callFake(noopFn);
 
@@ -56,7 +65,7 @@ describe('AppComponent', () => {
     oAuthService.setupAutomaticSilentRefresh.calls.reset();
   });
 
-  it('should correctly initialize AppComponent', () => {
+  it("should correctly initialize AppComponent", () => {
     createComponent();
     fixture.detectChanges();
 
@@ -70,7 +79,7 @@ describe('AppComponent', () => {
     expect(component.username).toEqual("some_username");
   });
 
-  it('login should trigger oauth service', () => {
+  it("login should trigger oauth service", () => {
     createComponent();
     fixture.detectChanges();
 
@@ -79,7 +88,7 @@ describe('AppComponent', () => {
     expect(oAuthService.initImplicitFlow).toHaveBeenCalled();
   });
 
-  it('logout should trigger oauth service', () => {
+  it("logout should trigger oauth service", () => {
     createComponent();
     fixture.detectChanges();
 
@@ -88,7 +97,7 @@ describe('AppComponent', () => {
     expect(oAuthService.logOut).toHaveBeenCalled();
   });
 
-  it('refresh should trigger oauth service', () => {
+  it("refresh should trigger oauth service", () => {
     createComponent();
     fixture.detectChanges();
 
@@ -97,7 +106,7 @@ describe('AppComponent', () => {
     expect(oAuthService.silentRefresh).toHaveBeenCalled();
   });
 
-  it('token should return oauth service invocation', () => {
+  it("token should return oauth service invocation", () => {
     createComponent();
     fixture.detectChanges();
 
@@ -106,7 +115,7 @@ describe('AppComponent', () => {
     expect(oAuthService.getAccessToken).toHaveBeenCalled();
   });
 
-  it('claims should return oauth service invocation', () => {
+  it("claims should return oauth service invocation", () => {
     createComponent();
     fixture.detectChanges();
 
@@ -115,7 +124,7 @@ describe('AppComponent', () => {
     expect(oAuthService.getIdentityClaims).toHaveBeenCalled();
   });
 
-  it('submitGoogleLogin should call oauth service initImplicitFlow', () => {
+  it("submitGoogleLogin should call oauth service initImplicitFlow", () => {
     createComponent();
     fixture.detectChanges();
 
@@ -124,10 +133,16 @@ describe('AppComponent', () => {
     expect(oAuthService.initImplicitFlow).toHaveBeenCalled();
   });
 
+  xit("should redirect the user to the admin page on successfull login", () => {
+    let router = TestBed.get(Router);
+    let spy = spyOn(router, "navigate");
+    component.submitLogin();
+    expect(spy).toHaveBeenCalledWith(["/admin/questions"]);
+  });
+
   function createComponent() {
     fixture = TestBed.createComponent(AppComponent);
 
     component = fixture.debugElement.componentInstance;
   }
-
 });

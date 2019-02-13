@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { QuestionsService } from "../../_shared/questions.service";
-import {Question} from "../../questions/_models/Question.model";
+import { Question } from "../../questions/_models/Question.model";
 
 @Component({
   selector: "app-quiz",
@@ -28,6 +28,7 @@ export class QuizComponent implements OnInit {
             correct: null
           });
         }
+        console.log(response);
       },
       error => {
         console.error(error);

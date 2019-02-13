@@ -1,21 +1,18 @@
-import {LoginService} from "./login.service";
-import {TestBed} from "@angular/core/testing";
+import { LoginService } from "./login.service";
+import { TestBed } from "@angular/core/testing";
 
-describe('LoginService', () => {
-
+describe("LoginService", () => {
   let service: LoginService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [
-        LoginService
-      ]
+      providers: [LoginService]
     }).compileComponents();
 
     service = TestBed.get(LoginService);
   });
 
-  it('should set state of the user login', () => {
+  it("should set state of the user login", () => {
     // Setting user is logged in
     service.loggedIn = false;
 
@@ -26,10 +23,9 @@ describe('LoginService', () => {
     service.Authenticate = false;
 
     expect(service.loggedIn).toBe(false);
-
   });
 
-  it('should return state of the user login', () => {
+  it("should return state of the user login", () => {
     // Setting user is logged in
     service.loggedIn = true;
 
@@ -39,5 +35,5 @@ describe('LoginService', () => {
     service.loggedIn = false;
 
     expect(service.isAuthenticated).toBe(false);
-  })
+  });
 });

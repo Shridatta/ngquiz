@@ -1,49 +1,62 @@
-
 <mat-toolbar class="mb-2" color="primary">Quiz App</mat-toolbar>
 <div class="container mt-2" *ngIf="quiz && quiz.length; else elseTemplate">
   <div class="w-100" *ngIf="!showResults">
-   <div class="mb-5">
-    <div class="header" class="mb-3">
-      <span class="dark-text float-left mt-3"
-        ><strong>Question {{ quizQuestionIndex + 1 }}</strong></span
-      >
-      <br>
-      <div class="chips float-right">
-        <div fxLayout="row" fxLayoutAlign="end center" >
-        <mat-chip class="chip1 ml-1" >Answered: {{ questionsInfo.answered }}</mat-chip>
-        <mat-chip class="chip2 ml-1"  >Correct: {{ questionsInfo.correct }}</mat-chip>
-        <mat-chip class="chip3 ml-1" >Total: {{ quiz.length }}</mat-chip>
-        <button
-          class="btn btn-primary"
-          *ngIf="questionsInfo.answered === quiz.length && quiz.length !== 0"
-          (click)="showResults = true"
+    <div class="mb-5">
+      <div class="header" class="mb-3">
+        <span  class="dark-text float-left mt-3"
+          ><strong 
+            >Question {{ quizQuestionIndex + 1 }}</strong
+          ></span
         >
-          Results
-        </button>
+        <br />
+        <div class="chips float-right">
+          <div fxLayout="row" fxLayoutAlign="end center">
+            <mat-chip class="chip1 ml-1"
+              >Answered: {{ questionsInfo.answered }}</mat-chip
+            >
+            <mat-chip class="chip2 ml-1"
+              >Correct: {{ questionsInfo.correct }}</mat-chip
+            >
+            <mat-chip class="chip3 ml-1">Total: {{ quiz.length }}</mat-chip>
+            <button
+              class="btn btn-primary"
+              *ngIf="
+                questionsInfo.answered === quiz.length && quiz.length !== 0
+              "
+              (click)="showResults = true"
+            >
+              Results
+            </button>
+          </div>
         </div>
       </div>
     </div>
-  </div>
 
     <br />
     <br />
 
     <mat-card class="mb-2">
-      <mat-card-title >
+      <mat-card-title>
         {{ this.quiz[quizQuestionIndex].question.name }}
       </mat-card-title>
 
       <div class="card-body" style="height: 7rem;">
         <ng-container *ngIf="this.quiz[quizQuestionIndex].correct === null">
-          <div class="cardcontainer" >
-          <input class=".inputbox-responsive" #answer placeholder="Answer to the question" />
-          &nbsp;
-          <button [color]="success"
-            class="btn btn-primary float-right btn-lg btn-block btn-responsive"
-            (click)="checkQuestionAnswer(answer.value)" mat-raised-button
-          >
-            Apply answer
-          </button>
+          <div class="cardcontainer">
+            <input
+              class=".inputbox-responsive"
+              #answer
+              placeholder="Answer to the question"
+            />
+            &nbsp;
+            <button
+              color="success"
+              class="btn btn-primary float-right btn-lg btn-block btn-responsive"
+              (click)="checkQuestionAnswer(answer.value)"
+              mat-raised-button
+            >
+              Apply answer
+            </button>
           </div>
           <div class="input-info">
             Note, that empty answeres are not allowed.
@@ -71,9 +84,10 @@
       </div>
     </mat-card>
     <div>
-      <button 
+      <button
         *ngIf="quizQuestionIndex > 0"
         class="btn btn-primary float-left"
+        id="previousQuestion"
         (click)="toPreviousQuestion()"
         mat-raised-button
       >
@@ -83,6 +97,7 @@
       <button
         *ngIf="quizQuestionIndex < quiz.length - 1"
         class="btn btn-primary float-right"
+        id="nextQuestion"
         (click)="toNextQuestion()"
         mat-raised-button
       >
@@ -102,7 +117,9 @@
     <div>
       <ng-container *ngFor="let item of this.quiz; let i = index">
         <mat-card class="bg-light mb-3">
-          <mat-card-title class="header-class">{{ i + 1 }}. {{ item.question.name }}</mat-card-title>
+          <mat-card-title class="header-class"
+            >{{ i + 1 }}. {{ item.question.name }}</mat-card-title
+          >
 
           <div class="card-body">
             <input
