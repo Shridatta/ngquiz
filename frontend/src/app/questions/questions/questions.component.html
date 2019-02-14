@@ -1,23 +1,55 @@
-<mat-toolbar class="mb-2" color="primary">Quiz App</mat-toolbar>
-<div class="container mb-2" id="search" fxLayout="row" fxLayoutAlign="end center" >
-    <mat-form-field class="search-field mr-1">
-      <input #searchText id="searchText" matInput placeholder="Enter Search query"/>
-    </mat-form-field>
-      <button class="float-right my-3" mat-raised-button color="primary" (click)="searchQuestionsWithText(searchText.value)">
-        <i class="fab fa-searchengin"></i> Search
-      </button>
+<div>
+  <nav class="navbar navbar-dark shadow">
+    <a class="navbar-brand" href="#">Quiz App</a>
+  </nav>
 </div>
 
-<div class="container" style="height: 4em;" fxLayout="row" fxLayoutAlign="end center" >
-    <button mat-raised-button color="primary" class="float-right my-3 ml-2" (click)="startQuiz()">
-        <mat-icon>
-          assignment
-        </mat-icon>
-    
-        Take Quiz 1
-      </button>
+<div
+  class="container mb-2 "
+  id="search"
+  fxLayout="row"
+  fxLayoutAlign="end center"
+>
+  <mat-form-field class="search-field mr-1">
+    <input
+      #searchText
+      id="searchText"
+      matInput
+      placeholder="Enter Search query"
+    />
+  </mat-form-field>
+  <button
+    class="btn-sm float-right my-3 shadow "
+    color="primary"
+    (click)="searchQuestionsWithText(searchText.value)"
+  >
+    <i class="fab fa-searchengin"></i> Search
+  </button>
+</div>
 
-  <button mat-raised-button color="primary" class="float-right my-3 ml-2" (click)="startOwnQuiz()">
+<div
+  class="container"
+  style="height: 4em;"
+  fxLayout="row"
+  fxLayoutAlign="end center"
+>
+  <button
+    color="primary"
+    class="btn-sm float-right my-3 ml-2 shadow "
+    (click)="startQuiz()"
+  >
+    <mat-icon>
+      assignment
+    </mat-icon>
+
+    Take Quiz 1
+  </button>
+
+  <button
+    color="primary"
+    class="btn-sm float-right my-3 ml-2 shadow "
+    (click)="startOwnQuiz()"
+  >
     <mat-icon>
       assignment
     </mat-icon>
@@ -25,7 +57,11 @@
     Take Quiz 2
   </button>
   &nbsp; &nbsp;
-  <button mat-raised-button color="primary" class="float-right my-3" (click)="addQuestion()">
+  <button
+    color="primary"
+    class="btn-sm float-right my-3 shadow "
+    (click)="addQuestion()"
+  >
     <mat-icon>
       add
     </mat-icon>
@@ -33,35 +69,43 @@
   </button>
 </div>
 
-<div class="container mt-5"  fxLayoutAlign="center center" *ngIf="questions && questions.length; else elseTemplate">
-    <div class="w-100">
-      <ol>
-        <li *ngFor="let question of filteredQuestions; let i = index">
-            <mat-card mat-line class="mb-3" >
-                <mat-card-header>
-                  <mat-card-title>
-                      {{ i + 1 }}. {{ question.name }}
-                  </mat-card-title>
-                  <span class="spacer"></span>
-                  <button mat-button (click)="editQuestion(question)">
-                      <i class="fas fa-pencil-alt"></i>
-                    </button>
-                    <button mat-button (click)="deleteQuestion(question)">
-                      <i class="fas fa-trash-alt"></i>
-                    </button>
-                </mat-card-header>
-                <mat-card-content>
-                    <h5 class="pl-4"> Answer: {{ question.answer }}</h5>
-                </mat-card-content>
-              </mat-card>
-        </li>
-      </ol>
-      <div id="noSearchItems" *ngIf="filteredQuestions?.length === 0">
-        No questions found by executing search on name and answer
-      </div>
+<div
+  class="container mt-5"
+  fxLayoutAlign="center center"
+  *ngIf="questions && questions.length; else elseTemplate"
+>
+  <div class="w-100">
+    <ol>
+      <li *ngFor="let question of filteredQuestions; let i = index">
+        <div class="parentcard card p-5 mb-3 shadow">
+          <div class="card-header shadow">
+            <div class="card-title ">{{ i + 1 }}. {{ question.name }}</div>
+            <span class="spacer"></span>
+            <button
+              class="editbutton shadow mb-3 "
+              (click)="editQuestion(question)"
+            >
+              <i class="fas fa-pencil-alt"></i>
+            </button>
+            &nbsp;
+            <button
+              class="deletebutton shadow mb-3"
+              (click)="deleteQuestion(question)"
+            >
+              <i class="fas fa-trash-alt"></i>
+            </button>
+          </div>
+          <div class="answercard card-body shadow">
+            <h5 class="pl-4">Answer: {{ question.answer }}</h5>
+          </div>
+        </div>
+      </li>
+    </ol>
+    <div id="noSearchItems" *ngIf="filteredQuestions?.length === 0">
+      No questions found by executing search on name and answer
     </div>
   </div>
-
+</div>
 
 <ng-template #elseTemplate>
   <p class="text-center">
@@ -71,4 +115,3 @@
     </span>
   </p>
 </ng-template>
-

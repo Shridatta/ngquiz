@@ -2,17 +2,22 @@
 
 html,
 body {
-    height: 100% !important;
+  height: 100% !important;
 }
 
 .mat-horizontal-content-container {
-    height: 100vh !important;
- }
+  height: 100vh !important;
+}
 
- .mat-horizontal-stepper-content {
-     width: 30%;
-     height: 30%;
-     position: absolute;
-     top: 35%;
-     left: 40%;
- }
+.mat-horizontal-stepper-content {
+  width: 30%;
+  height: 30%;
+  position: absolute;
+  top: 35%;
+  left: 40%;
+}
+
+.navbar {
+  background: slateblue;
+  color: wheat;
+}

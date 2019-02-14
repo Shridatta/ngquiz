@@ -1,25 +1,28 @@
-<mat-toolbar class="mb-2" color="primary">Quiz App</mat-toolbar>
+<nav class="navbar navbar-dark shadow">
+  <a class="navbar-brand" href="#">Quiz App</a>
+</nav>
 <div class="container mt-2" *ngIf="quiz && quiz.length; else elseTemplate">
   <div class="w-100" *ngIf="!showResults">
     <div class="mb-5">
       <div class="header" class="mb-3">
-        <span  class="dark-text float-left mt-3"
-          ><strong 
-            >Question {{ quizQuestionIndex + 1 }}</strong
-          ></span
+        <span class="dark-text float-left mt-3"
+          ><strong>Question {{ quizQuestionIndex + 1 }}</strong></span
         >
         <br />
         <div class="chips float-right">
           <div fxLayout="row" fxLayoutAlign="end center">
-            <mat-chip class="chip1 ml-1"
-              >Answered: {{ questionsInfo.answered }}</mat-chip
+            <span class="badge badge-pill chip1 ml-1 shadow"
+              >Answered: {{ questionsInfo.answered }}</span
             >
-            <mat-chip class="chip2 ml-1"
-              >Correct: {{ questionsInfo.correct }}</mat-chip
+            <span class="badge badge-pill chip2 ml-1 shadow"
+              >Correct: {{ questionsInfo.correct }}</span
             >
-            <mat-chip class="chip3 ml-1">Total: {{ quiz.length }}</mat-chip>
+            <span class="badge badge-pill chip3 ml-2 mr-1 shadow"
+              >Total: {{ quiz.length }}</span
+            >
+
             <button
-              class="btn btn-primary"
+              class="btn btn-primary shadow"
               *ngIf="
                 questionsInfo.answered === quiz.length && quiz.length !== 0
               "
@@ -35,10 +38,10 @@
     <br />
     <br />
 
-    <mat-card class="mb-2">
-      <mat-card-title>
+    <div class="card mb-2 p-3 shadow">
+      <div class="card-title">
         {{ this.quiz[quizQuestionIndex].question.name }}
-      </mat-card-title>
+      </div>
 
       <div class="card-body" style="height: 7rem;">
         <ng-container *ngIf="this.quiz[quizQuestionIndex].correct === null">
@@ -82,7 +85,7 @@
           </span>
         </span>
       </div>
-    </mat-card>
+    </div>
     <div>
       <button
         *ngIf="quizQuestionIndex > 0"
@@ -116,7 +119,7 @@
 
     <div>
       <ng-container *ngFor="let item of this.quiz; let i = index">
-        <mat-card class="bg-light mb-3">
+        <div class="card bg-light mb-3 p-3 shadow">
           <mat-card-title class="header-class"
             >{{ i + 1 }}. {{ item.question.name }}</mat-card-title
           >
@@ -139,7 +142,7 @@
               Correct Answer is: {{ item.question.answer }}</span
             >
           </div>
-        </mat-card>
+        </div>
       </ng-container>
     </div>
   </div>

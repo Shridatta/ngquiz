@@ -8,7 +8,7 @@
   padding-right: 1.25rem;
 }
 
-.body{
+.body {
   background: #d3d3d3;
 }
 .header button {
@@ -24,14 +24,13 @@
 }
 
 .green-text {
-  color:  rgb(114, 209, 26);
+  color: rgb(114, 209, 26);
 }
 
 .card-body input,
 .card-body button {
   display: inline-block;
 }
-
 
 .card-body input {
   padding-left: 0.3125rem;
@@ -45,10 +44,16 @@
 
   width: 100%;
 }
+.editbutton {
+  background-color: #d1675c;
+}
 
-.mat-raised-button{
+.deletebutton {
+  background-color: #d1675c;
+}
+.mat-raised-button {
   background-color: teal;
-  color:white;
+  color: white;
 }
 .mat-success {
   background-color: green;
@@ -92,12 +97,11 @@ input.incorrect {
   margin-bottom: 0.625rem;
 }
 
-
-.chips{
-  width:400px;
+.chips {
+  width: 400px;
 }
-.chip1{
-  color:white;
+.chip1 {
+  color: white;
   background-color: rgb(72, 59, 196);
   padding: 3%;
   text-align: center;
@@ -105,9 +109,8 @@ input.incorrect {
   box-shadow: 2px 4px;
 }
 
-
-.chip2{
-  color:white;
+.chip2 {
+  color: white;
   background-color: rgb(114, 209, 26);
   padding: 3%;
   border-radius: 25px;
@@ -115,19 +118,19 @@ input.incorrect {
   text-align: center;
 }
 
-.inputbox-responsive{
+.inputbox-responsive {
   font-size: 2vw;
   font-size: 2vh;
-  white-space:normal;
+  white-space: normal;
 }
 .btn-responsive {
-    font-size: 2vw;
-    font-size: 2vh;
-    white-space:normal;
+  font-size: 2vw;
+  font-size: 2vh;
+  white-space: normal;
 }
 
-.chip3{
-  color:white;
+.chip3 {
+  color: white;
   background-color: rgb(22, 133, 153);
   padding: 3%;
   border-radius: 25px;
@@ -135,7 +138,7 @@ input.incorrect {
   text-align: center;
 }
 
-.cardcontainer{
+.cardcontainer {
   height: 100%;
   display: flex;
   justify-content: center;

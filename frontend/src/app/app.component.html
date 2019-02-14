@@ -1,14 +1,13 @@
-<mat-toolbar class="mb-2" color="primary">Quiz App</mat-toolbar>
-<div class="container" >
- <div  fxFlex="80%"  fxFlex.gt-sm="50%">
-   <button mat-raised-button color="primary"  class="mb-3" (click)="submitLogin();" >
-     <i class="fab fa-facebook-f"></i> &nbsp;
-      Login with facebook
-    </button> 
-   &nbsp;
-   <button mat-raised-button color="primary" (click)="submitGoogleLogin();">
-     <i class="fab fa-google"></i> &nbsp;
-      Login with Google
-    </button>
- </div>
+<nav class="navbar navbar-dark shadow">
+  <a class="navbar-brand" href="#">Quiz App</a>
+</nav>
+
+<div class="container">
+  <button class="btn mb-3 shadow" (click)="submitLogin()">
+    <i class="fab fa-facebook-f"></i> &nbsp; Login with facebook
+  </button>
+  &nbsp;
+  <button class="btn mb-3 shadow" (click)="submitGoogleLogin()">
+    <i class="fab fa-google"></i> &nbsp; Login with Google
+  </button>
 </div>

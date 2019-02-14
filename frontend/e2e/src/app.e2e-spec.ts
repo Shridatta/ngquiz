@@ -1,14 +1,15 @@
-import { AppPage } from './app.po';
+import { AppPage } from "./app.po";
 
-describe('workspace-project App', () => {
+describe("workspace-project App", () => {
   let page: AppPage;
 
   beforeEach(() => {
+    jasmine.DEFAULT_TIMEOUT_INTERVAL = 10000;
     page = new AppPage();
   });
 
-  it('should display welcome message', () => {
+  it("should display the Quiz App navbar heading", () => {
     page.navigateTo();
-    expect(page.getParagraphText()).toEqual('Welcome to frontend!');
+    expect(page.getParagraphText()).toEqual("Quiz App");
   });
 });
