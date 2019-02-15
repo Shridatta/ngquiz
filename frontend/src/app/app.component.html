@@ -1,13 +1,17 @@
-<nav class="navbar navbar-dark shadow">
+<nav class="navbar navbar-dark shadow" id="root-toolbar">
   <a class="navbar-brand" href="#">Quiz App</a>
 </nav>
 
 <div class="container">
-  <button class="btn mb-3 shadow" (click)="submitLogin()">
+  <button id="fbbutton" class="btn mb-3 shadow" (click)="submitLogin()">
     <i class="fab fa-facebook-f"></i> &nbsp; Login with facebook
   </button>
   &nbsp;
-  <button class="btn mb-3 shadow" (click)="submitGoogleLogin()">
+  <button
+    id="googlebutton"
+    class="btn mb-3 shadow"
+    (click)="submitGoogleLogin()"
+  >
     <i class="fab fa-google"></i> &nbsp; Login with Google
   </button>
 </div>

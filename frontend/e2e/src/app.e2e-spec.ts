@@ -1,6 +1,6 @@
 import { AppPage } from "./app.po";
 
-describe("workspace-project App", () => {
+describe("Home page", () => {
   let page: AppPage;
 
   beforeEach(() => {
@@ -11,5 +11,15 @@ describe("workspace-project App", () => {
   it("should display the Quiz App navbar heading", () => {
     page.navigateTo();
     expect(page.getParagraphText()).toEqual("Quiz App");
+  });
+
+  it("should have login with facebook button", () => {
+    page.navigateTo();
+    expect(page.getFBButton()).toContain("Login with facebook");
+  });
+
+  it("should have login with google button", () => {
+    page.navigateTo();
+    expect(page.getGoogleButton()).toContain("Login with Google");
   });
 });
